@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Me </title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/all.css">
+<link rel="stylesheet" type="text/css" href="assets/css/simple.css">
+
+<body>
+	<div id="navbar"></div>
+	<div id="main"></div>
+</body>
+
+<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/popper.min.js"></script>
+<script type="text/javascript" src="assets/js/nav.js"></script>
+<script type="text/javascript" src="assets/js/scramble.js"></script>
+<script type="text/javascript">
+	window.addEventListener('load', function() {
+		$('#navbar').load("nav/index.html");
+		var hash = window.location.hash.substring(1);
+		knowhash(hash);// trigger the hashes
+
+		resize(); //triger the resize;
+
+		window.addEventListener('hashchange',
+			function() {
+
+				var hash = window.location.hash.substring(1);
+				knowhash(hash);
+
+		},false);
+
+
+	});
+
+	
+
+	function knowhash(hash) {
+
+		var text = 	[	
+						'Hi. namaku Adi Nurfiansyah',
+						'web developer.',
+						'Back End Developer, PhP, JavaScript'
+					];
+
+		switch (hash) {
+
+			case 'about' :
+			$('#main').load("main/about.html", function() {
+				show(hash);
+			});
+			break;
+
+			case 'skills' :
+			$('#main').load("main/skills.html", function() {
+				show(hash);
+			});
+			break;
+
+			case 'home' :
+			default :
+			$('#main').load("main/index.html", function() {
+				scramble(text);
+			});
+			break;
+
+		}
+
+	}
+
+	function scramble(text) {
+
+		var arr = 	[	
+						document.getElementById('text_fig'), 
+						document.getElementById('text_fig1'),
+						document.getElementById('text_fig2')
+					];
+		var text_c = text;
+		var possible = "-+*/|}{[]~\\\":;?/.><=+-_)(*&^%$#@!)}";
+		var length = text.length;
+		for (var x = 0; x < length; x++) {
+
+			var random = '';
+
+			for (var i = 0; i < text[x].length+1; i++) {
+
+				random = text[x].substr(0, i);
+
+				for (var j = i; j < text[x].length; j++) {
+
+					random += possible.charAt(Math.floor(Math.random() * possible.length));
+
+				}
+
+				generateRandomWord(arr[x], i, random);
+				random = '';		
+
+			}
+
+		}
+		
+	}
+
+	function generateRandomWord(arr, i, random) {
+
+		setTimeout(() => {
+			arr.innerHTML = random;
+		}, i*90);
+
+	}
+
+
+
+	function show(hash) {
+
+		var text_fig = '';
+		var text = '';
+		
+
+		switch(hash) {
+			case 'about' :
+			text_fig = document.getElementById('title_text_about');
+			text = 'Tentang diriku'
+			break;
+
+			case 'skills' :
+			text_fig = document.getElementById('title_text_skills');
+			text = 'Skills'
+			break;
+		}
+
+		var length = text.length;
+		
+
+		for (let i=0; i < length+1; i++) {
+
+			setTimeout(function(){
+				text_fig.innerHTML = text.substr(0, i);
+			}, i*70);
+			
+		}
+	}
+
+</script>
+
+</html>

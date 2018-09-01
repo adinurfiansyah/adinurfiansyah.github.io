@@ -20,11 +20,16 @@
 <script type="text/javascript" src="assets/js/scramble.js"></script>
 <script type="text/javascript">
 	window.addEventListener('load', function() {
-		$('#navbar').load("nav/index.html");
+		$('#navbar').load("nav/index.html", function() {
+
+			resize(); //show or hide the sidebar
+
+		});
+
 		var hash = window.location.hash.substring(1);
 		knowhash(hash);// trigger the hashes
-
-		resize(); //triger the resize;
+		
+		
 
 		window.addEventListener('hashchange',
 			function() {
@@ -42,10 +47,11 @@
 	function knowhash(hash) {
 
 		var text = 	[	
-						'Hi. namaku Adi Nurfiansyah',
+						'Hi, my name is Adi Nurfiansyah',
 						'web developer.',
-						'Back End Developer, PhP, JavaScript'
+						'Back End Developer / PhP / JavaScript'
 					];
+
 
 		switch (hash) {
 
@@ -69,6 +75,8 @@
 			break;
 
 		}
+
+
 
 	}
 

@@ -4,7 +4,40 @@ body {
 }
 #nav-btn{
     margin: 0 !important;
-    visibility: collapse;
+    font-size: 25px;
+    visibility: hidden;
+    transition: transform 1s ease-in-out;
+
+}
+
+#nav-btn:hover {
+     transform: rotate(180deg);
+     color: #088da5;
+}
+
+#image-profile {
+
+     transition: 0.3s;
+
+}
+
+#image-profile:hover {
+
+     transform: scale(1.1);
+    
+}
+
+.skill span {
+
+    transition: 0.3s;
+    display: inline-block;
+
+}
+
+.skill span:hover {
+
+    transform: scale(1.5);
+
 }
 
 /* The side navigation menu */
@@ -22,15 +55,7 @@ body {
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
-.m0 {
-    margin: 0!important;
-}
-.mt-0 {
-    margin-top: 0!important;
-}
-.pt-0 {
-    padding-top: : 0!important;
-}
+
 /* The navigation menu links */
 .sidenav .menu a {
     margin: 8px 8px 64px 16px;
@@ -57,10 +82,12 @@ body {
 /* When you mouse over the navigation links, change their color */
 .sidenav .menu a:hover {
     color: #f1f1f1;
+    transform: scale(1.2);
 }
 
 .sidenav .menu-social a:hover {
     color: #088da5;
+    transform: scale(1.2);
 }
 
 /* Position and style the close button (top right corner) */
